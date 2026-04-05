@@ -2,7 +2,6 @@
 #include <vector>
 #include <algorithm>
 #include <random>
-#include <limits>
 #include <chrono>
 #include <cstdlib>
 #include <cmath>
@@ -45,16 +44,14 @@ int main()
 void run_complexity_analysis()
 {
     const size_t sizes[] = {5000, 10000, 15000, 20000, 25000, 30000, 35000, 40000, 45000, 50000};
-    const int num_sizes = sizeof(sizes) / sizeof(sizes[0]);
 
-    // Создаем заголовок CSV
+    // Создаем CSV-файл
     ofstream out("results.csv");
     out << "Algorithm,SequenceType,Size,Time(ms),Comparisons,Operations\n";
     out.close();
 
-    for (int i = 0; i < num_sizes; ++i) {
-        size_t size = sizes[i];
-        float* array = new float[size];
+    for (size_t size : sizes) {
+        auto* array = new float[size];
 
         // Тестируем на разных типах последовательностей
         const char* seq_types[] = {"ordered", "reordered", "random", "quasi"};
@@ -72,7 +69,7 @@ void run_complexity_analysis()
             }
 
             // Создаем копию для каждого алгоритма
-            float* array_copy = new float[size];
+            auto* array_copy = new float[size];
 
             // Тестируем разные алгоритмы
             vector<pair<string, void(*)(float*, size_t)>> algorithms = {
@@ -242,7 +239,7 @@ void counting_sort_float(T* array, size_t size)
 
     for (size_t i = 0; i < size; ++i) {
         operation_count++; // инкремент в count
-        count[static_cast<size_t>(array[i] - min_val)]++;
+        ++count[static_cast<size_t>(array[i] - min_val)];
     }
 
     size_t index = 0;
@@ -362,7 +359,7 @@ void reset_counters()
 int compare_qsort(const void* a, const void* b)
 {
     comparison_count++;
-    float fa = *((float*)a);
-    float fb = *((float*)b);
+    float fa = *(float*)a;
+    float fb = *(float*)b;
     return (fa > fb) - (fa < fb);
 }
