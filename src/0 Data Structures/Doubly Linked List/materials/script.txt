@@ -1,0 +1,49 @@
+1
+1
+PodcastGTE
+1000
+150
+No
+Yes
+GTE
+24 56 7
+
+1
+2
+Coco_Jamboo
+10000
+3
+No
+No
+Mr.President
+0 3 38
+
+1
+3
+ABCalph
+230
+10
+Yes
+Yes
+
+1
+4
+Gachi
+100000000
+100000000
+Yes
+Yes
+Billy
+100 0 0
+
+1
+5
+TheTransporter
+3000
+2999
+Yes
+No
+LouisLeterrier
+1 32 00 
+3
+
